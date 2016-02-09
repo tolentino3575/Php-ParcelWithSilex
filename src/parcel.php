@@ -62,36 +62,3 @@ $weight = $_GET['weight'];
   $new_parcel->setWidth($width);
   $new_parcel->setWeight($weight);
 ?>
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  </head>
-  <body>
-    <div class="container">
-      <ul>
-        <?php
-          $new_height = $new_parcel->getHeight();
-          $new_width = $new_parcel->getWidth();
-          $new_weight = $new_parcel->getWeight();
-          if(!$new_weight || !$new_height || !$new_width){
-            echo "Please fill out the form completely.";
-          } else {
-            echo "<li> Height: $new_height </li>";
-            echo "<li> Width: $new_width </li>";
-            echo "<li> Weight: $new_weight </li>";
-            $volume = $new_parcel->volume();
-            echo "<li> Volume: $volume </li>";
-            $shipping_cost = $new_parcel->callToShip();
-            echo "<p> Shipping Total:" . "$" . $shipping_cost . "</p>";
-          }
-
-        ?>
-      </ul>
-    </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-  </body>
-</html>
